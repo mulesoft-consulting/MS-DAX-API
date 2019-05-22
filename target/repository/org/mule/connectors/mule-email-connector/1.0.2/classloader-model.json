@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "artifactCoordinates": {
+    "groupId": "org.mule.connectors",
+    "artifactId": "mule-email-connector",
+    "version": "1.0.2",
+    "type": "jar",
+    "classifier": "mule-plugin"
+  },
+  "dependencies": [
+    {
+      "artifactCoordinates": {
+        "groupId": "com.sun.mail",
+        "artifactId": "javax.mail",
+        "version": "1.5.6",
+        "type": "jar"
+      },
+      "uri": "repository/com/sun/mail/javax.mail/1.5.6/javax.mail-1.5.6.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "javax.activation",
+        "artifactId": "activation",
+        "version": "1.1",
+        "type": "jar"
+      },
+      "uri": "repository/javax/activation/activation/1.1/activation-1.1.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "com.google.guava",
+        "artifactId": "guava",
+        "version": "18.0",
+        "type": "jar"
+      },
+      "uri": "repository/com/google/guava/guava/18.0/guava-18.0.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "commons-collections",
+        "artifactId": "commons-collections",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.commons",
+        "artifactId": "commons-lang3",
+        "version": "3.6",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/commons/commons-lang3/3.6/commons-lang3-3.6.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "commons-io",
+        "artifactId": "commons-io",
+        "version": "2.4",
+        "type": "jar"
+      },
+      "uri": "repository/commons-io/commons-io/2.4/commons-io-2.4.jar"
+    }
+  ]
+}

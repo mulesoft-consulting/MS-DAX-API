@@ -1,0 +1,183 @@
+{
+  "version": "1.0.0",
+  "artifactCoordinates": {
+    "groupId": "com.mulesoft.connectors",
+    "artifactId": "mule-microsoft-dynamics-ax-connector",
+    "version": "2.0.0",
+    "type": "jar",
+    "classifier": "mule-plugin"
+  },
+  "dependencies": [
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-transports-http",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-transports-http/3.2.2/cxf-rt-transports-http-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-core",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-core/3.2.2/cxf-core-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "com.fasterxml.woodstox",
+        "artifactId": "woodstox-core",
+        "version": "5.0.3",
+        "type": "jar"
+      },
+      "uri": "repository/com/fasterxml/woodstox/woodstox-core/5.0.3/woodstox-core-5.0.3.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.codehaus.woodstox",
+        "artifactId": "stax2-api",
+        "version": "3.1.4",
+        "type": "jar"
+      },
+      "uri": "repository/org/codehaus/woodstox/stax2-api/3.1.4/stax2-api-3.1.4.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.ws.xmlschema",
+        "artifactId": "xmlschema-core",
+        "version": "2.2.3",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/ws/xmlschema/xmlschema-core/2.2.3/xmlschema-core-2.2.3.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-bindings-soap",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-bindings-soap/3.2.2/cxf-rt-bindings-soap-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-wsdl",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-wsdl/3.2.2/cxf-rt-wsdl-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "wsdl4j",
+        "artifactId": "wsdl4j",
+        "version": "1.6.3",
+        "type": "jar"
+      },
+      "uri": "repository/wsdl4j/wsdl4j/1.6.3/wsdl4j-1.6.3.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-databinding-jaxb",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-databinding-jaxb/3.2.2/cxf-rt-databinding-jaxb-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-frontend-jaxws",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-frontend-jaxws/3.2.2/cxf-rt-frontend-jaxws-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "xml-resolver",
+        "artifactId": "xml-resolver",
+        "version": "1.2",
+        "type": "jar"
+      },
+      "uri": "repository/xml-resolver/xml-resolver/1.2/xml-resolver-1.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.ow2.asm",
+        "artifactId": "asm",
+        "version": "5.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/ow2/asm/asm/5.2/asm-5.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-bindings-xml",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-bindings-xml/3.2.2/cxf-rt-bindings-xml-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-frontend-simple",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-frontend-simple/3.2.2/cxf-rt-frontend-simple-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-ws-addr",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-ws-addr/3.2.2/cxf-rt-ws-addr-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.cxf",
+        "artifactId": "cxf-rt-ws-policy",
+        "version": "3.2.2",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/cxf/cxf-rt-ws-policy/3.2.2/cxf-rt-ws-policy-3.2.2.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.apache.neethi",
+        "artifactId": "neethi",
+        "version": "3.1.1",
+        "type": "jar"
+      },
+      "uri": "repository/org/apache/neethi/neethi/3.1.1/neethi-3.1.1.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "com.mulesoft.connectors",
+        "artifactId": "mule-connector-commons",
+        "version": "1.2.0",
+        "type": "jar"
+      },
+      "uri": "repository/com/mulesoft/connectors/mule-connector-commons/1.2.0/mule-connector-commons-1.2.0.jar"
+    },
+    {
+      "artifactCoordinates": {
+        "groupId": "org.mule.connectors",
+        "artifactId": "atlantic-commons",
+        "version": "1.1.1",
+        "type": "jar"
+      },
+      "uri": "repository/org/mule/connectors/atlantic-commons/1.1.1/atlantic-commons-1.1.1.jar"
+    }
+  ]
+}

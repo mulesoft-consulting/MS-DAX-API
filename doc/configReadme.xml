@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<configuration>
+    <placeholders>
+        <placeholder id="template_name">MS Dynamics CRM to Salesforce Contact Migration</placeholder>
+    </placeholders>
+    <sections>
+        <section id="use_case">
+As a Salesforce admin I want to synchronize Contacts between MS Dynamics CRM and Salesforce in a one-time manner.
+
+This Template should serve as a foundation for setting an online migration of Contacts from MS Dynamics CRM to a Salesforce instance. Everytime the HTTP endpoint is triggered, the integration will migrate all contacts from the MS Dynamics CRM instance in manner of one-time integration and it will be responsible for updating or inserting the Contacts on the target Salesforce instance.
+
+Requirements have been set not only to be used as examples, but also to establish a starting point to adapt your integration to your requirements.
+
+As implemented, this Template leverages the [Batch Module](http://www.mulesoft.org/documentation/display/current/Batch+Processing).
+The batch job is divided in *Process* and *On Complete* stages.
+
+The integration is triggered by a HTTP endpoint defined in the flow that is going to trigger the application, querying the MS Dynamics contacts matching a filter criteria and executing the batch job.
+During the *Process* stage, each MS Dynamics Contact will be filtered depending on if it has an existing matching Contact in the Salesforce instance.
+The last step of the *Process* stage will group the Contacts and insert/update them in Salesforce.
+Finally during the *On Complete* stage, the Template will log output statistics data into the console and send an email with the results.
+        </section>
+        <section id="considerations">
+<![CDATA[
+To make this Anypoint Template run, there are certain preconditions that must be considered. All of them deal with the preparations in both source (MS Dynamics) and destination (Salesforce) systems, that must be made in order for all to run smoothly. 
+**Failing to do so could lead to unexpected behavior of the template.**
+
+This particular Anypoint Template illustrate the migration use case between MS Dynamics and Salesforce, thus it requires both instances to work.
+]]>
+        </section>
+        <section id="msdyn_src">
+<![CDATA[
+You need to install Java Cryptography Extensions to be able to connect to MS Dynamics. Please [choose](http://www.oracle.com/technetwork/java/javase/downloads/index.html) a relevant version according to your Java installation.
+]]>
+        </section>
+        <section id="application_configuration">
+        <![CDATA[
+**Application Configuration**
++ page.size `200`
++ http.port `8081`
+
+**Salesforce Connector configuration**
+
++ sfdc.username `joan.baez@orgb`
++ sfdc.password `JoanBaez456`
++ sfdc.securityToken `ces56arl7apQs56XTddf34X`
+
+**MS Dynamics Connector configuration**
+
++ msdyn.retries `3`
++ msdyn.username `username@company_name.onmicrosoft.com`
++ msdyn.password `password`
++ msdyn.url `https://company_name.api.crm4.dynamics.com/XRMServices/2011/Organization.svc`
+
+**SMTP Services configuration**
+
++ smtp.host `smtp.gmail.com`
++ smtp.port `587`
++ smtp.user `johndoe%40gmail.com`
++ smtp.password `password`
+
+**E-mail Details**
+
++ mail.from `batch.migratecontacts.migration%40mulesoft.com`
++ mail.to `user@example.com`
++ mail.subject `Batch Job Finished Report`
+
+**Syncing policy for accounts**
+
++ account.sync.policy=syncAccount
+
+**Note:** the property **account.sync.policy** can take any of the two following values:
+
++ **doNotCreateAccount**: The application will migrate the contacts over without assigning any account to them.
++ **syncAccount**: The application will migrate the contacts over and try to assign them their respective account in Salesforce, matching accounts by name. If no account is found for a specific contact, the application will create an account in Salesforce with the same name and assign it to the contact.
+]]>
+        </section>
+        <section id="api_calls">
+        <![CDATA[
+Salesforce imposes limits on the number of API Calls that can be made. Therefore calculating this amount may be an important factor to consider. Contact Migration Template calls to the API can be calculated using the formula:
+
+***1 + X + X / ${page.size}*** 
+
+Being ***X*** the number of Contacts to be synchronized on each run. 
+
+The division by ***${page.size}*** is because, by default, Contacts are gathered in groups of ${page.size} for each Upsert API Call in the commit step. 
+
+For instance if 10 records are fetched from origin instance, then 12 api calls will be made (1 + 10 + 1).
+
+**Note:** if the property **account.sync.policy** is set as "syncAccount", the number of API calls will be increased because of the needed query for the specific account, before upserting the contact in the destination system.
+]]>
+        </section>
+        <section id="default_business_logic_xml">
+        <![CDATA[
+Functional aspect of the Template is implemented on this XML, directed by one flow that will check for Salesforce creations/updates. The several message processors constitute three high-level actions that fully implement the logic of this Template:
+
+1. The Template goes to the MS Dynamics and query all existing Contacts that match the filter criteria.
+2. During the *Process* stage, each MS Dynamics Contact will be matched by name against Salesforce, in order to decide whether to create or update the contact.
+3. The following Batch step will match the Accounts for each contact in the destination system if the syncAccount policy is set. The final batch step will upsert the contacts in Salesforce by gathering them in batches.
+
+Finally during the *On Complete stage* the Template will log output statistics data into the console.
+]]>
+        </section>
+        <section id="default_endpoints_xml">
+        <![CDATA[
+This file is conformed by a Flow containing the HTTP endpoint that triggers the migration by executing the batch job process, and a Mule component that returns the batch job response to the endpoint.
+]]>
+        </section>
+    </sections>
+</configuration>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd ">
+	<flow name="queryTableEndpoint" doc:id="b4a558ce-f483-434c-92c5-6552438f6b2d" >
+		<http:listener doc:name="Listener" doc:id="319d7989-5a62-4dee-a186-1361acdf6b2c" config-ref="HTTP_Listener_config" path="${http.listner.query.path}"/>
+	</flow>
+	<flow name="staticQueryEndpoint" doc:id="68f88fdc-9a7a-4138-bf65-c368a924a028" >
+		<http:listener doc:name="Listener" doc:id="d3a92f0d-f0c5-4c50-97cf-7e4645e8d137" config-ref="HTTP_Listener_config" path="${http.listner.staticQuery.path}"/>
+	</flow>
+	<flow name="docServiceEndpoint" doc:id="6db3826b-abd6-4c61-a62e-0160f6368426" >
+		<http:listener doc:name="Listener" doc:id="3f9f17d3-5e06-4bf4-b43e-671f3e407c31" config-ref="HTTP_Listener_config" path="${http.listner.docService.path}"/>
+	</flow>
+</mule>

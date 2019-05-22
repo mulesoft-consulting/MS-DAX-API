@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:min-log="http://www.mulesoft.org/schema/mule/min-log"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/min-log http://www.mulesoft.org/schema/mule/min-log/current/mule-min-log.xsd">
+
+	<configuration defaultErrorHandler-ref="apikit-errors" />
+	<sub-flow name="errorHandlingFlow" doc:id="d21bf593-56c2-4eec-be54-c8e696ce2221" >
+		<logger level="INFO" doc:name="Logger" doc:id="c3228f54-b0c7-44d3-92a9-fbc331576455" />
+	</sub-flow>
+</mule>

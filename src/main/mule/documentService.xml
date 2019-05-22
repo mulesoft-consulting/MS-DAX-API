@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:microsoft-dynamics-ax="http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax/current/mule-microsoft-dynamics-ax.xsd">
+	<flow name="documentServiceFlow" doc:id="479d4443-65f5-4c4f-90c8-38683885457e" >
+		<logger level="INFO" doc:name="Start: Logger" doc:id="f2d2360c-4a94-4f98-84ba-22e5ef769d88" message="Start: Flow to access document service"/>
+		<ee:transform doc:name="Create XML for AX Document Service Call" doc:id="714a95ac-69da-4cdd-a953-f8d3da610255" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/xml
+ns ns0 http://tempuri.org
+---
+{
+	ns0#payload: {
+		ns0#"_recordType":"",
+		ns0#"_id": ""
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<microsoft-dynamics-ax:invoke-document-service-operation doc:name="Invoke Document Service Operation" doc:id="e2803b3b-c308-43b6-9796-fc577bdfb6c5" config-ref="Microsoft_Dynamics_AX_Config" service="Choose the service from the list" action="Choose action from list"/>
+		<ee:transform doc:name="Transform Payload" doc:id="89038b3f-a766-4ddb-9665-9da794c4fea9" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End: Logger" doc:id="e964fdbd-9d33-42e7-b46b-362291b3b1c5" message="End: Flow to access document service"/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="91c6bfae-8aa9-4456-afb2-5a1d3c4d7852" >
+				<flow-ref doc:name="errorHandlingFlow" doc:id="5ac6d8ba-db23-4d09-a28f-4d5f41b3988c" name="errorHandlingFlow"/>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

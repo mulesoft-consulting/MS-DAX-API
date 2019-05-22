@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:microsoft-dynamics-ax="http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax/current/mule-microsoft-dynamics-ax.xsd">
+	<flow name="queryTableFlow" doc:id="6e43fd01-4309-4003-a8a6-4b98f798b667" >
+		<logger level="INFO" doc:name="Start: Logger" doc:id="0ecaf0b2-65c7-4845-b51a-e7ddfb089abc" message="Start: Flow to query AOT table"/>
+		<ee:transform doc:name="Create Query" doc:id="24fd3d93-d713-4d82-bc57-f4face0ed46e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"dsql: SELECT name, id FROM ProjectTable"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<microsoft-dynamics-ax:query-table doc:name="Query table" doc:id="c997760e-3205-4156-ad4e-e6f527585a92" config-ref="Microsoft_Dynamics_AX_Config" itemsPerPage="${ax.pageSize}">
+			<microsoft-dynamics-ax:query >#[payload]</microsoft-dynamics-ax:query>
+		</microsoft-dynamics-ax:query-table>
+		<ee:transform doc:name="Transform Payload" doc:id="75c10fb5-7801-41fe-a11c-3e5a9b74eb3b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End: Logger" doc:id="2d404465-0011-4af1-beb2-b52bd40366ce" message="End: Flow to query AOT table"/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="6f93f782-93bf-47f2-a27a-e016a236ab50" >
+				<flow-ref doc:name="errorHandlingFlow" doc:id="4923ad33-32c5-48d6-ba2b-c98e83962305" name="errorHandlingFlow"/>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

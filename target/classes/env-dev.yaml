@@ -1,0 +1,30 @@
+#please put in the values for DEV environment
+http:
+  listner.port: ""
+  listner.query.path: "/queryTable"
+  listner.staticQuery.path: "/staticQuery"
+  listner.docService.path: "/docService"
+  
+# username = DAX username
+# password = DAX password
+# aosserver = DAX server hostname
+# aosport = DAX server port
+
+# To deploy DAX application, you will need to install Anypoint Gateway Service on the DAX server. 
+# The same can be downloaded from : https://docs.mulesoft.com/connectors/windows/windows-gw-services-guide
+
+# gatewayprotocol = HTTPS by default  
+# gatewayhost = As this service is installed on DAX server it will be same as DAX server host name
+# gatewayport = By default the gateway service run on 9333 post
+# gatewayendpoint = "router"
+
+ax:
+  username: ""    
+  password: ""    
+  aosserver: ""   
+  aosport:  ""    
+  gatewayprotocol:  ""
+  gatewayhost:  ""
+  gatewayport:  "9333"
+  gatewayendpoint: "router"
+  pageSize: ""

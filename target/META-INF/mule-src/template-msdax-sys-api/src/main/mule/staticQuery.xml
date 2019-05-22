@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:microsoft-dynamics-ax="http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax/current/mule-microsoft-dynamics-ax.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="staticQueryFlow" doc:id="f9ec5ad4-064a-4b09-9942-69523c7edd53" >
+		<logger level="INFO" doc:name="Start: Logger" doc:id="95a58a20-0e9b-4afe-b1b4-c634af0bf7a5" message="Start: Flow to execute static query"/>
+		<microsoft-dynamics-ax:static-query doc:name="Static query" doc:id="300954b8-793a-4080-ab8f-88472867481c" config-ref="Microsoft_Dynamics_AX_Config" staticQueryName="Choose Query Name" itemsPerPage="${ax.pageSize}"/>
+		<ee:transform doc:name="Transform Payload" doc:id="23a7f841-2fd7-40be-a34a-c117851631c7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End: Logger" doc:id="e477786d-98d5-424e-bc56-61583000678b" message="End: Flow to execute static query"/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="574e8866-fecc-4527-8edd-c56075c0cd53" >
+				<flow-ref doc:name="errorHandlingFlow" doc:id="ecce5887-2b9b-4543-853f-687240abb99d" name="errorHandlingFlow"/>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

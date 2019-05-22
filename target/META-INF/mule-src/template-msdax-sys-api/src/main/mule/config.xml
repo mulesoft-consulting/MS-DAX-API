@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mule xmlns:microsoft-dynamics-ax="http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:email="http://www.mulesoft.org/schema/mule/email" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:microsoft-dynamics-crm="http://www.mulesoft.org/schema/mule/microsoft-dynamics-crm" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd http://www.mulesoft.org/schema/mule/microsoft-dynamics-crm http://www.mulesoft.org/schema/mule/microsoft-dynamics-crm/current/mule-microsoft-dynamics-crm.xsd
+http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax http://www.mulesoft.org/schema/mule/microsoft-dynamics-ax/current/mule-microsoft-dynamics-ax.xsd">
+	<global-property name="mule.env" value="dev" doc:name="Global Property" />
+	<http:listener-config name="HTTP_Listener_config" doc:id="910654bf-9fd9-4073-bad4-cf951b7f0022" doc:name="HTTP Listener config">
+        <http:listener-connection host="0.0.0.0" port="${http.listner.port}" />
+    </http:listener-config>
+	<microsoft-dynamics-ax:dynamics-ax-config name="Microsoft_Dynamics_AX_Config" doc:name="Microsoft Dynamics AX Config" doc:id="bd84b3dc-5dde-4a41-9414-ed16498ecf61" >
+		<microsoft-dynamics-ax:gateway-connection username="${ax.username}" password="${ax.password}" aosServerName="${ax.aosserver}" aosWsdlPort="${ax.aosport}" gatewayRouterServiceAddress="${secure::ax.gatewayprotocol}://${secure::ax.gatewayhost}:${secure::ax.gatewayport}/${secure::ax.gatewayendpoint}"/>
+	</microsoft-dynamics-ax:dynamics-ax-config>
+    
+</mule>

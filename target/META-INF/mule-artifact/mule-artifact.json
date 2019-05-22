@@ -1,0 +1,31 @@
+{
+  "configs": [
+    "errors.xml",
+    "config.xml",
+    "endpoint.xml",
+    "staticQuery.xml",
+    "documentService.xml",
+    "queryTable.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "org.mule.templates:template-msdax-sys-api:1.0.1",
+  "minMuleVersion": "4.1.3",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "env-qa.yaml",
+        "log4j2.xml",
+        "env-dev.yaml",
+        "env-prod.yaml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
